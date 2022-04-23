@@ -1,3 +1,6 @@
+// 1. what is API
+// 2. How do I call API
+// 3. Explain code
 const host = "https://provinces.open-api.vn/api/";
 var callAPI = (api) => {
     return axios.get(api)
@@ -24,7 +27,6 @@ var renderData = (array, select) => {
     array.forEach(element => {
         row += `<option value="${element.code}">${element.name}</option>`
     });
-    // $("#" + select).html(row);
     document.querySelector("#" + select).innerHTML = row
 }
 
@@ -33,7 +35,6 @@ $("#province").change(() => {
     printResult();
 });
 $("#district").change(() => {
-    console.log(222);
     callApiWard(host + "d/" + $("#district").val() + "?depth=2");
     printResult();
 });
@@ -42,8 +43,11 @@ $("#ward").change(() => {
 })
 
 var printResult = () => {
-    if ($("#district").val() != "" && $("#province").val() != "" && $("#ward").val() != "") {
-        let result = $("#province option:selected").text() + " | " + $("#district option:selected").text() + " | " + $("#ward option:selected").text();
+    if ($("#district").val() != "" && $("#province").val() != "" &&
+        $("#ward").val() != "") {
+        let result = $("#province option:selected").text() +
+            " | " + $("#district option:selected").text() + " | " +
+            $("#ward option:selected").text();
         $("#result").text(result)
     }
 
